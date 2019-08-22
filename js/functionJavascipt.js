@@ -26,11 +26,23 @@ mousedown = false;
 //     div.style.left= basket_x_pos+20+"px";
 //   }
 
+// const keyState= {};
+// function movestuff(){
+//   for(let key in keyState){
+//     if(keyState[key]){
+//       console.log(key)
+//       if(key === "ArrowRight") div.style.left=  (basket_x_pos-2)+"px";
+//       if(key === "ArrowLeft")  div.style.left= (basket_x_pos - 50) +"px"; 
+//     }
+//   }
+// }
+
 // }
 // document.onkeydown=keyDownHandler;
 ////////////////////////////////////////////////////////////////
 
-
+// window.onkeydown = (e) => keyState[e.code] = true;
+// window.onkeyup = e => keyState[e.code] = false;
 
 //controling basket with mouse
 div.addEventListener('mousedown', function (e) { 
@@ -100,7 +112,7 @@ function check_banana_hits_basket(banana) {
   var scoreHead=document.querySelector("#score")
   
   var thresholdX = 50/2; // width of the basket for the hit detection
-  var thresholdY = 10; // heigh of the handle, to detect if the banana is inside the bucket
+  var thresholdY = 5; // heigh of the handle, to detect if the banana is inside the bucket
 
   // FOR BANANA
   var  styleBanana = window.getComputedStyle(banana) //get the style of banana
@@ -113,14 +125,25 @@ function check_banana_hits_basket(banana) {
   basket_x_pos = parseInt(styleBasket.getPropertyValue('left'),10) + thresholdX; // get the left
   
   // if y position or the top of the banana is higher than the basket y position AND x position of the banana is within the basket hole, then it is a score and return true
-  if( (Math.abs(basket_x_pos-banana_x_pos) < thresholdX) &&
-      (banana_y_pos-thresholdY > basket_y_pos) ){
+  // console.log(basket_y_pos)
+  // return
+  // if (banana_y_pos > basket_y_pos)
+  if( ( Math.abs(basket_x_pos-banana_x_pos) < thresholdX) &&
+      ( Math.abs(banana_y_pos-basket_y_pos) < thresholdY) ){
         scoreCount++;
         console.log(scoreCount)
         score.innerText=scoreCount;
         scoreHead.innerText=scoreCount;
        return true;
   }
+  // if( (Math.abs(basket_x_pos-banana_x_pos) < thresholdX) &&
+  //     (banana_y_pos-thresholdY > basket_y_pos) ){
+  //       scoreCount++;
+  //       console.log(scoreCount)
+  //       score.innerText=scoreCount;
+  //       scoreHead.innerText=scoreCount;
+  //      return true;
+  // }
   
   return false;
 }

@@ -15,6 +15,11 @@ function startSet(){
 
 
 function my_game(){
+    
+
+
+    // movestuff()
+
     startSet();
     // console.log(lifeScore);
 
@@ -61,7 +66,7 @@ function my_game(){
         clearTimeout(timeoutId);
         return;
     }
-    console.log(`tick`)
+    // console.log(`tick`)
 
 }
 
