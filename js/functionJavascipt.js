@@ -1,4 +1,16 @@
 //  
+class Ban{
+  constructor(initial_position){
+    this.initial_position=initial_position;
+    
+  }
+}
+banana_initial_position = 70;
+
+var ban1=new Ban(banana_initial_position);
+var ban2=new Ban(banana_initial_position);
+var ban3=new Ban(banana_initial_position);
+
 var the_game=0;
 var scoreCount=0;
 var life=document.querySelector("#life")
